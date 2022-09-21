@@ -69,11 +69,10 @@ function display(products) {
         <tr>
             <td>${index + 1}</td>
             <td>${sanpham.name}</td>
-            <td>${sanpham.price}</td>
+            <td>$ ${sanpham.price}</td>
             <td>
                 <img src="${sanpham.img}" alt="" style="width:100px">
             </td>
-
             <td>${sanpham.desc}</td>
             <td>${sanpham.type}</td>
             <td>
@@ -105,11 +104,12 @@ dom(".modal-footer").addEventListener("click", (evt) => {
         screen = dom("#Screen").value,
         backCamera = dom("#BackCamera").value,
         frontCamera = dom("#FrontCamera").value,
-        img = dom("#HinhSP").value,
+        img = dom("#jpg").value,
         desc = dom("#MoTa").value,
         type = dom("#Type").value;
+        src = dom("#png").value;
 
-    const product = new SanPham(null, name, price, screen, backCamera, frontCamera, img, desc, type);
+    const product = new SanPham(null, name, price, screen, backCamera, frontCamera, img, desc, type,src);
 
     if (elementType === "add") {
         addProduct(product);
@@ -145,7 +145,8 @@ dom("#tblDanhSachSP").addEventListener("click", (evt) => {
                 dom("#Screen").value = response.data.screen;
                 dom("#BackCamera").value = response.data.backCamera;
                 dom("#FrontCamera").value = response.data.frontCamera;
-                dom("#HinhSP").value = response.data.img;
+                dom("#jpg").value = response.data.img;
+                dom("#png").value = response.data.src;
                 dom("#MoTa").value = response.data.desc;
                 dom("#Type").value = response.data.type;
             })
@@ -161,7 +162,8 @@ function resetForm() {
     dom("#Screen").value = "";
     dom("#BackCamera").value = "";
     dom("#FrontCamera").value = "";
-    dom("#HinhSP").value = "";
+    dom("#jpg").value = "";
+    dom("#png").value = "";
     dom("#MoTa").value = "";
     dom("#Type").value = "Chọn hãng điện thoại";
 }

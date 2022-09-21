@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShoppingCart</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <body data-new-gr-c-s-check-loaded="14.1080.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1080.0">
+        <div id="app">
+            <div>
+                <div class="banner">
+                    <div class="main-cart">
+                    </div>
+                    <div class="nav">
+                        <button>
+                            <i class="fas fa-shopping-cart" style="font-size:2rem;"></i>
+                        </button>
+                        <span class="total-qty">0</span>
+                    </div>
+                    <div onclick="sideNav(0)" class="cover"></div>
+                    <div class="cover purchase-cover"></div>
+                    <div class="cart">
+                        <div class="side-nav">
+                            <button>
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <h2>Cart</h2>
+                            <div class="cart-items"></div>
+                            <div class="final">
+                                <strong>Total: $ <span class="total">0</span></strong>
+                                <div class="action">
+                                    <button onclick="buy(1)" class="btn buy">Purchase
+                                        <i class="fas fa-credit-card" style="color:#6665dd;"></i>
+                                    </button>
+                                    <button class="btn clear">
+                                        Clear Cart
+                                        <i class="fas fa-trash" style="color:#bb342f;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="stock-limit">
+                        <em>You Can Only Buy 10 Items For Each Product</em>
+                        <button class="btn-ok" onclick="limitPurchase(this)">Okay</button>
+                    </div>
+                    <div class="order-now"></div> -->
+                </div>
+            </div>
+        </div>
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../admin/services/sanPhamAPI.js"></script>
+        <script src="../admin/models/SanPham.js"></script>
+        <script src="../admin/models/Cart.js"></script>
+        <script src="./js/main.js"></script>
+    </body>
+
+</html>
