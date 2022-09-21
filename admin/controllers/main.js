@@ -111,7 +111,7 @@ dom(".modal-footer").addEventListener("click", (evt) => {
 
     const product = new SanPham(null, name, price, screen, backCamera, frontCamera, img, desc, type,src);
 
-    if (elementType === "add") {
+    if (elementType === "add" && validateForm()) {
         addProduct(product);
         resetForm();
     }

@@ -129,44 +129,53 @@
             <input hidden id="MaSP">
             <div class="form-group">
               <label>Tên Sản Phẩm</label>
-              <input id="TenSP" class="form-control" placeholder="Nhập vào tên sản phẩm" />
+              <input id="TenSP" class="form-control" placeholder="Nhập vào tên sản phẩm" oninput="validateName()"/>
+              <span id="spanName" class="text-danger"></span>
             </div>
             <div class="form-group">
               <label>Giá</label>
-              <input id="GiaSP" class="form-control" placeholder="Nhập vào giá" />
+              <input id="GiaSP" class="form-control" placeholder="Nhập vào giá" oninput="validatePrice()"/>
+              <span id="spanGia" class="text-danger"></span>
             </div>
             <div class="form-group">
               <label>Màn hình</label>
-              <input id="Screen" class="form-control" placeholder="Thông tin màn hình" />
+              <input id="Screen" class="form-control" placeholder="Thông tin màn hình"/>
+    
             </div>
             <div class="form-group">
               <label>Camera trước</label>
-              <input id="FrontCamera" class="form-control" placeholder="MP" />
+              <input id="FrontCamera" class="form-control" placeholder="MP" oninput="validateFrCame()"/>
+              <span id="spanFrCame" class="text-danger"></span>
             </div>
             <div class="form-group">
               <label>Camera sau</label>
-              <input id="BackCamera" class="form-control" placeholder="MP" />
+              <input id="BackCamera" class="form-control" placeholder="MP" oninput="validateBaCame()"/>
+              <span id="spanBaCame" class="text-danger"></span>            
             </div>
             <div class="form-group">
               <label>Hình Ảnh JPG</label>
-              <input id="jpg" class="form-control" placeholder="Nhập vào hình sản phẩm .jpg" />
+              <input id="jpg" class="form-control" placeholder="Nhập vào hình sản phẩm .jpg" oninput="validateImgJPG()"/>
+              <span id="spanImgJPG" class="text-danger"></span>
             </div>
             <div class="form-group">
               <label>Hình Ảnh PNG</label>
-              <input id="png" class="form-control" placeholder="Nhập vào hình sản phẩm .png" />
+              <input id="png" class="form-control" placeholder="Nhập vào hình sản phẩm .png" oninput="validateImgPNG()"/>
+              <span id="spanImgPNG" class="text-danger"></span>
             </div>
             <div class="form-group">
               <label>Desc</label>
-              <input id="MoTa" class="form-control" placeholder="Mô tả sản phẩm" />
+              <input id="MoTa" class="form-control" placeholder="Mô tả sản phẩm" oninput="validateDesc()"/>
+              <span id="spanDesc" class="text-danger"></span>
             </div>
             <div class="form-group">
               <label for="">Loại điện thoại</label>
-              <select class="form-control" name="" id="Type">
+              <select class="form-control" name="" id="Type" oninput="validateType()">
                 <option>Chọn hãng điện thoại</option>
                 <option value="Iphone">Iphone</option>
                 <option value="Samsung">Samsung</option>
                 <option value="Xiaomi">Xiaomi</option>
               </select>
+              <span id="spanHang" class="text-danger"></span>
             </div>
           </div>
           <!-- Modal footer -->
@@ -200,6 +209,7 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="./services/sanPhamAPI.js"></script>
   <script src="./models/SanPham.js"></script>
+  <script src="./controllers/validate.js"></script>
   <script src="./controllers/main.js"></script>
 </body>
 
