@@ -172,7 +172,7 @@ dom(".final").addEventListener("click", (evt) => {
             dom(".invoice").style.display = "block";
             dom(".cover").style.display = "none";
             dom(".side-nav").style.right = "-100%";
-
+            dom(".shipping-items").append = displayPurchase(cartDetails);
         }
     }
 
@@ -186,6 +186,15 @@ dom(".final").addEventListener("click", (evt) => {
     }
     displayCart(cartDetails);
     sum(cartDetails);
+})
+
+//  Btn không thanh toán nữa
+dom(".order").addEventListener("click", (evt) => {
+    if (evt.target.getAttribute("class") === "btn-cancel btn") {
+        console.log(evt.target);
+        dom(".purchase-cover").style.display = "none";
+        dom(".invoice").style.display = "none";
+    }
 })
 
 // Hiển thị danh sách sản phẩm trong giỏ hàng
@@ -223,9 +232,23 @@ function sum(cartDetails) {
     }
     dom(".total").innerText = sum;
     dom(".total-qty").innerText = count;
+    dom(".pay").innerText = "$ " + sum;
 }
 
+// function show chi tiet hoa don
 function displayPurchase(cartDetails) {
-   
+    let itemsPrice = cartDetails.reduce((result, info) => {
+        return result + `
+            $ ${info.price}
+        `
+    }, "");
+
+    let itemsName = cartDetails.reduce((result, info) => {
+        return result + `
+            $ ${info.name}
+        `
+    }, "");
+    dom(".item-names").innerText = itemsName;
+    dom(".items-price").innerText = itemsPrice;
 }
 
