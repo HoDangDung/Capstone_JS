@@ -190,7 +190,7 @@ dom(".final").addEventListener("click", (evt) => {
     sum(cartDetails);
 })
 
-// Xử lý đơn hàng
+// Xác nhận thông tin đơn hàng
 dom(".order").addEventListener("click", (evt) => {
 
     // Btn chấp nhận thanh toán
@@ -209,14 +209,25 @@ dom(".order").addEventListener("click", (evt) => {
     }
 })
 
-dom(".invoice button .btn-ok").addEventListener("click", (evt) => {
-    if(evt.target.getAttribute("class") === "btn-ok"){
+// btn hoàn thành đặt hàng
+dom(".order-now").addEventListener("click", (evt) => {
+    if (evt.target.getAttribute("class") === "btn-ok") {
         console.log(evt.target);
         dom(".invoice").style.height = "180px";
         dom(".invoice").style.width = "400px";
-        // dom(".invoice").innerHTML = thanks();
+        dom(".invoice").innerHTML = thanks();
+        dom(".order-now").addEventListener("click", (evt) => {
+            if (evt.target.getAttribute("class") === "btn-ok") {
+                dom(".purchase-cover").style.display = "none";
+                dom(".invoice").style.display = "none";
+                cartDetails = [];
+                localStorage.setItem("cartData", JSON.stringify(cartDetails));
+                displayCart(cartDetails);
+                sum(cartDetails);
+            }
+        })
     }
-});
+})
 
 // Hiển thị danh sách sản phẩm trong giỏ hàng
 function displayCart(cartDetails) {
@@ -287,9 +298,12 @@ function showBill() {
     `
 }
 
-function thanks(){
+function thanks() {
     return `
-    
+    <div class="order-details">
+        <em class="thanks">Thanks for shopping with us</em>
+        <button class="btn-ok">continue</button>
+    </div>
     `
 }
 
