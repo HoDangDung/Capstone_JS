@@ -73,7 +73,7 @@ function display(sanPham) {
     dom(".main-cart").innerHTML = show;
 }
 
-cartDetails = [];
+let cartDetails = [];
 
 let quantity = 1;
 localStorageCart();
@@ -81,7 +81,7 @@ localStorageCart();
 // Lưu giỏ hàng vào localStorage
 function localStorageCart() {
     cartDetails = JSON.parse(localStorage.getItem("cartData")) || [];
-    cartDetails = cartDetails.map((cartData)=>{
+    cartDetails = cartDetails.map((cartData) => {
         return new Cart(cartData.id,
             cartData.name,
             cartData.price,
@@ -92,7 +92,7 @@ function localStorageCart() {
             cartData.desc,
             cartData.type,
             cartData.src
-            )
+        )
     })
     displayCart(cartDetails);
     sum(cartDetails);
@@ -159,14 +159,28 @@ dom(".cart-items").addEventListener("click", (evt) => {
     sum(cartDetails);
 });
 
-// Xóa toàn bộ giỏ hàng
+// Thanh toán/ Xóa toàn bộ sản phẩm trong giỏ hàng
 dom(".final").addEventListener("click", (evt) => {
-    console.log(evt.target);
     let count = 0;
-    if(evt.target.getAttribute("class") === "btn clear"){
-        for(let i in cartDetails) {
+
+    // Thanh toán toàn bộ sản phẩm trong giỏ hàng
+    if (evt.target.getAttribute("class") === "btn buy") {
+        if (cartDetails.length > 0) {
+            console.log(cartDetails.length);
+            console.log(evt.target);
+            dom(".purchase-cover").style.display = "block";
+            dom(".invoice").style.display = "block";
+            dom(".cover").style.display = "none";
+            dom(".side-nav").style.right = "-100%";
+
+        }
+    }
+
+    // Btn xóa toàn bộ sản phẩm trong giỏ hàng
+    if (evt.target.getAttribute("class") === "btn clear") {
+        for (let i in cartDetails) {
             count++;
-        }  
+        }
         cartDetails.splice(0, count);
         localStorage.setItem("cartData", JSON.stringify(cartDetails));
     }
@@ -199,14 +213,19 @@ function displayCart(cartDetails) {
     dom(".cart-items").innerHTML = showCart;
 }
 
-function sum(cartDetails){
+// Tính tiền sản phẩm trong giỏ hàng
+function sum(cartDetails) {
     let sum = 0;
     let count = 0;
-    for(let i in cartDetails){
-        sum += cartDetails[i].price*1;
+    for (let i in cartDetails) {
+        sum += cartDetails[i].price * 1;
         count++;
     }
     dom(".total").innerText = sum;
     dom(".total-qty").innerText = count;
+}
+
+function displayPurchase(cartDetails) {
+   
 }
 
