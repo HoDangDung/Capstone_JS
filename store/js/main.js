@@ -73,9 +73,11 @@ function display(sanPham) {
     dom(".main-cart").innerHTML = show;
 }
 
-let cartDetails = [];
+cartDetails = [];
 
 let quantity = 1;
+
+// Hiển thị danh sách sản phẩm được thêm vào trong giỏ hàng
 localStorageCart();
 
 // Lưu giỏ hàng vào localStorage
@@ -188,14 +190,33 @@ dom(".final").addEventListener("click", (evt) => {
     sum(cartDetails);
 })
 
-//  Btn không thanh toán nữa
+// Xử lý đơn hàng
 dom(".order").addEventListener("click", (evt) => {
+
+    // Btn chấp nhận thanh toán
+    if (evt.target.getAttribute("class") === "btn-order btn") {
+        console.log(evt.target);
+        dom(".invoice").style.height = "500px";
+        dom(".invoice").style.width = "400px";
+        dom(".invoice").innerHTML = showBill();
+    }
+
+    //  Btn không thanh toán nữa
     if (evt.target.getAttribute("class") === "btn-cancel btn") {
         console.log(evt.target);
         dom(".purchase-cover").style.display = "none";
         dom(".invoice").style.display = "none";
     }
 })
+
+dom(".invoice button .btn-ok").addEventListener("click", (evt) => {
+    if(evt.target.getAttribute("class") === "btn-ok"){
+        console.log(evt.target);
+        dom(".invoice").style.height = "180px";
+        dom(".invoice").style.width = "400px";
+        // dom(".invoice").innerHTML = thanks();
+    }
+});
 
 // Hiển thị danh sách sản phẩm trong giỏ hàng
 function displayCart(cartDetails) {
@@ -233,6 +254,7 @@ function sum(cartDetails) {
     dom(".total").innerText = sum;
     dom(".total-qty").innerText = count;
     dom(".pay").innerText = "$ " + sum;
+    return sum;
 }
 
 // function show chi tiet hoa don
@@ -251,4 +273,25 @@ function displayPurchase(cartDetails) {
     dom(".item-names").innerText = itemsName;
     dom(".items-price").innerText = itemsPrice;
 }
+
+// function show bill
+function showBill() {
+    return `
+        <div class="order-details">
+            <em>your order has been placed</em>
+            <p>Your order-id is : <span>${Math.floor(Math.random() * 1000)}</span></p>
+            <p>your order will be delivered to you in 3-5 working days</p>
+            <p>you can pay <span class="sumBill">$ ${sum(cartDetails)}</span> by card or any online transaction method after the products have been dilivered to you</p>
+        </div>
+        <button class="btn-ok">okay</button>
+    `
+}
+
+function thanks(){
+    return `
+    
+    `
+}
+
+
 
